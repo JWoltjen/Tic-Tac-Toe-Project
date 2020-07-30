@@ -1,5 +1,7 @@
 class Player {
-  constructor(){
+  constructor(name, token){
+    this.id = name;
+    this.token = token;
     this.wins = [];
     this.turn = turn || true;
   }
@@ -7,6 +9,6 @@ class Player {
 
   }
   retreiveWinsFromStorage(){
-    
+
   }
 }
