@@ -25,6 +25,7 @@ body {
         grid-column: 2 / span 2;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
     .b {
       grid-column: 1;

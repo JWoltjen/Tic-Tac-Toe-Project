@@ -1,7 +1,7 @@
 class Game {
-  constructor(player1, player2, ){
-    this.player1 = player1;
-    this.player2 = player2;
+  constructor(player1, player2){
+    this.player1 = player1
+    this.player2 = new Player({id: 'Player2', token: 'x', wins: 0, turn: false})
     this.player1turn = true;
     this.player2turn = false;
     this.draw = false;
@@ -12,7 +12,7 @@ class Game {
 
   }
   recordPlayer2win(){
-    
+
   }
   resetBoard(){
 
