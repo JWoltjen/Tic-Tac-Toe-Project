@@ -36,12 +36,19 @@ body {
     .d {
         grid-column: 2 / span 2 ;
         grid-row: 2 / span 1;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr
+    }
+      .square {
         display: flex;
         justify-content: center;
-    }
+        align-items: center;
+      }
     .e {
       grid-column: 4 ;
       grid-row: 1 / span 2;
       display: flex;
-      justify-content: center; 
+      justify-content: center;
     }
