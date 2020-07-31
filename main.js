@@ -6,14 +6,13 @@ var grid = document.querySelector('.d')
 grid.addEventListener('click', handleMainClick)
 
 function handleMainClick(event){
- if (this.player1.turn === true && event.target.className === "square"){
-   this.player1.turn = false;
-   this.player2.turn = true;
+ if (test.player1turn === true && event.target.className === "square"){
+   return test.player1turn = false,test.player2turn = true
    console.log("player1 has clicked a square")
  }
- if (this.player2.turn === true && event.target.className === "square"){
-   this.player1.turn = true;
-   this.player2.turn = false;
+ if (test.player2turn === true && event.target.className === "square"){
+   test.player1turn = true;
+   test.player2turn = false;
    console.log("player2 has clicked a square")
  }
 }
