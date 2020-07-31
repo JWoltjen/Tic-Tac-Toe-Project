@@ -1,8 +1,8 @@
 var grid = document.querySelector('.d')
 
-window.onload = function(){
-  var currentGame = new Game(new Player({id: 'Player1', token: 'o', wins: 0, turn: true}),new Player({id: 'Player2', token: 'x', wins: 0, turn: false}) )
-}
+// window.onload = function(){
+  var test = new Game({"Player1": "PlayerOne", "Token": "x"}, {"Player2": "Player2", "Token": "o"})
+
 grid.addEventListener('click', handleMainClick)
 
 function handleMainClick(event){
