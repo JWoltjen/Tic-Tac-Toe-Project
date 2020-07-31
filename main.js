@@ -4,16 +4,16 @@ var test = new Game(new Player({"Player1": "PlayerOne", "Token": "X"}), new Play
 grid.addEventListener('click', handleMainClick)
 
 function handleMainClick(event){
- if (test.player1turn === true && event.target.className === "square"){
+ if (test.player1turn === true && event.target.className === "active"){
   event.target.innerText = ("X")
+  event.target.classList.remove("active")
   test.player1turn = false;
-  console.log("player1 has clicked a square")
- test.player2turn = true;
+  test.player2turn = true;
 } else if
-  (test.player2turn === true && event.target.className === "square"){
+  (test.player2turn === true && event.target.className === "active"){
    event.target.innerText = ("O")
+   event.target.classList.remove("active")
    test.player2turn = false;
-   console.log("player2 has clicked a square")
    test.player1turn = true;
  }
 }
