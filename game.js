@@ -27,7 +27,7 @@ class Game {
     this.player1win = false;
     this.player2win = false;
     this.turnCounter = 0;
-    this.grid = {row1: ["", "", "" ], row2: ["", "", ""], row3: ["", "", ""]}
+    this.grid = {row1: ["1", "2", "3" ], row2: ["4", "5", "6"], row3: ["7", "8", "9"]}
     this.player1.retreiveWinsFromStorage()
     this.player2.retreiveWinsFromStorage();
   }
