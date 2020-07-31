@@ -1,7 +1,7 @@
 var grid = document.querySelector('.d')
 
 // window.onload = function(){
-  var test = new Game({"Player1": "PlayerOne", "Token": "x"}, {"Player2": "Player2", "Token": "o"})
+  var test = new Game(new Player({"Player1": "PlayerOne", "Token": "x"}), new Player({"Player2": "Player2", "Token": "o"}))
 
 grid.addEventListener('click', handleMainClick)
 
