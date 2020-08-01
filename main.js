@@ -1,5 +1,5 @@
 var grid = document.querySelector('.d')
-
+var announcer = document.querySelector('.announcer')
 var test = new Game(new Player("Player1", "X", 0), new Player("Player2","O", 0))
 
 var icon1 = (Object.values(test.player1.token))
@@ -17,11 +17,13 @@ function handleMainClick(event){
     event.target.innerText = (icon1)
     event.target.classList.remove("active")
     dataModelUpdater1(event)
+    announcer.innerText = "It's Player 2's Turn"
     return turnCounter();
   } if (test.player2turn === true && event.target.classList.contains("active")){
     event.target.innerText = (icon2)
     event.target.classList.remove("active")
     dataModelUpdater2(event)
+    announcer.innerText = "It's Player 1's Turn"
     return turnCounter();
   }
 }
@@ -115,13 +117,16 @@ function turnCounter(){
 function player1wins(){
   test.player1.wins++
   test.player1.saveWinsToStorage()
-   alert("Player 1 Wins!")
+  test.player2.saveWinsToStorage()
+  announcer.innerText = "Player 1 Wins!!!"
+  alert("reset game?")
   return test.resetBoard()
 }
 
 function player2wins(){
   test.player2.wins++
   test.player2.saveWinsToStorage()
+  test.player1.saveWinsToStorage()
   alert ("Player 2 Wins!")
   return test.resetBoard()
 }
