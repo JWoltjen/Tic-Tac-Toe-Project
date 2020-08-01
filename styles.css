@@ -43,6 +43,9 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-bottom: 15%;
+      border-bottom: 3px solid;
+      border-bottom-color: #023E8A
     }
     .winCounter1 {
       grid-column: 1;
@@ -50,6 +53,9 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-bottom: 15%;
+      border-bottom: 3px solid;
+      border-bottom-color: #023E8A
     }
     .d {
         grid-column: 2 / span 2 ;
@@ -80,6 +86,9 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-bottom: 15%;
+      border-bottom: 3px solid;
+      border-bottom-color: #023E8A
     }
     .winCounter2 {
       grid-column: 1;
@@ -87,4 +96,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding-bottom: 15%;
+      border-bottom: 3px solid;
+      border-bottom-color: #023E8A
     }
