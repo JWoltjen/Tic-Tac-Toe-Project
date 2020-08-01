@@ -4,12 +4,10 @@ class Game {
     this.player2 = player2
     this.player1turn = true;
     this.player2turn = false;
+      this.turnCounter = 0;
     this.draw = false;
-    this.player1win = false;
     this.player1wins = 0;
     this.player2wins = 0;
-    this.player2win = false;
-    this.turnCounter = 0;
     this.grid = {row1: ["1", "2", "3" ], row2: ["4", "5", "6"], row3: ["7", "8", "9"]}
   }
   recordPlayer1win(){
