@@ -127,6 +127,7 @@ function player2wins(){
   test.player2.wins++
   test.player2.saveWinsToStorage()
   test.player1.saveWinsToStorage()
+  announcer.innerText = "Player 2 Wins!!!"
   alert ("Player 2 Wins!")
   return test.resetBoard()
 }
