@@ -16,8 +16,8 @@ class Game {
     this.turnCounter = 0;
     this.grid = {row1: ["1", "2", "3" ], row2: ["4", "5", "6"], row3: ["7", "8", "9"]}
     this.player1.retreiveWinsFromStorage()
-    console.log("Player1 Wins:", player1.wins)
+    console.log("Player1 Wins:", this.player1.wins)
     this.player2.retreiveWinsFromStorage();
-    console.log("Player2 Wins:" player2.wins)
+    console.log("Player2 Wins:", this.player2.wins)
   }
 }
