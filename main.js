@@ -116,12 +116,12 @@ function player1wins(){
   test.player1.wins++
   test.player1.saveWinsToStorage()
    alert("Player 1 Wins!")
-  //return test.resetBoard()
+  return test.resetBoard()
 }
 
 function player2wins(){
   test.player2.wins++
   test.player2.saveWinsToStorage()
   alert ("Player 2 Wins!")
-  //return test.resetBoard()
+  return test.resetBoard()
 }
