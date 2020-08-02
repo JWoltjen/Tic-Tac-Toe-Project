@@ -119,6 +119,7 @@ function player1wins(){
   test.player1.saveWinsToStorage()
   test.player2.saveWinsToStorage()
   announcer.innerText = "Player 1 Wins!!!"
+  document.querySelector(".wincounter1").innerText = test.player1.wins
   alert("reset game?")
   return test.resetBoard()
 }
@@ -128,6 +129,8 @@ function player2wins(){
   test.player2.saveWinsToStorage()
   test.player1.saveWinsToStorage()
   announcer.innerText = "Player 2 Wins!!!"
+  document.querySelector(".wincounter2").innerText = test.player2.wins
+
   alert ("Player 2 Wins!")
   return test.resetBoard()
 }
