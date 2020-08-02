@@ -13,6 +13,12 @@ grid.addEventListener('click', winChecker1)
 grid.addEventListener('click', winChecker2)
 button.addEventListener('click', resetGame)
 
+window.onload = function (){
+  test.player1.retreiveWinsFromStorage()
+  document.querySelector(".winCounter1").innerHTML = test.player1.wins
+  test.player2.retreiveWinsFromStorage()
+  document.querySelector(".winCounter2").innerHTML = test.player2.wins
+}
 
 function handleMainClick(event){
  if (test.player1turn === true && event.target.classList.contains("active")){

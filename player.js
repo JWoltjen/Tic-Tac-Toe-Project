@@ -8,7 +8,7 @@ class Player {
     localStorage.setItem(`${this.id} wins`, this.wins)
   }
   retreiveWinsFromStorage(){
-   this.wins = localStorage.getItem(`${this.id} wins`)
+   this.wins = parseInt(localStorage.getItem(`${this.id} wins`))
 
   }
 }
