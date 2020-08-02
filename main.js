@@ -71,39 +71,25 @@ function dataModelUpdater2(event){
   }
 
 function winChecker1(event){
-  if (test.grid.row1[0] === "X" && test.grid.row1[1] === "X" && test.grid.row1[2] === "X"){
-  player1wins()}
-  if (test.grid.row2[0] === "X" && test.grid.row2[1] === "X" && test.grid.row2[2] === "X"){
-   player1wins()}
-  if (test.grid.row3[0] === "X" && test.grid.row3[1] === "X" && test.grid.row3[2] === "X"){
-   player1wins()}
-  if (test.grid.row1[0] === "X" && test.grid.row2[0] === "X" && test.grid.row3[0] === "X"){
-   player1wins()}
-  if (test.grid.row1[0] === "X" && test.grid.row2[1] === "X" && test.grid.row3[2] === "X"){
-   player1wins()}
-  if (test.grid.row1[1] === "X" && test.grid.row2[1] === "X" && test.grid.row3[1] === "X"){
-   player1wins()}
-  if (test.grid.row1[2] === "X" && test.grid.row2[2] === "X" && test.grid.row3[2] === "X"){
-   player1wins()}
+  if (test.grid.row1[0] === "X" && test.grid.row1[1] === "X" && test.grid.row1[2] === "X") ||
+  if (test.grid.row2[0] === "X" && test.grid.row2[1] === "X" && test.grid.row2[2] === "X") ||
+  if (test.grid.row3[0] === "X" && test.grid.row3[1] === "X" && test.grid.row3[2] === "X") ||
+  if (test.grid.row1[0] === "X" && test.grid.row2[0] === "X" && test.grid.row3[0] === "X") ||
+  if (test.grid.row1[0] === "X" && test.grid.row2[1] === "X" && test.grid.row3[2] === "X") ||
+  if (test.grid.row1[1] === "X" && test.grid.row2[1] === "X" && test.grid.row3[1] === "X") ||
+  if (test.grid.row1[2] === "X" && test.grid.row2[2] === "X" && test.grid.row3[2] === "X") ||
   if (test.grid.row1[2] === "X" && test.grid.row2[1] === "X" && test.grid.row3[0] === "X"){
    player1wins()}
   }
 
 function winChecker2(event){
-  if (test.grid.row1[0] === "O" && test.grid.row1[1] === "O" && test.grid.row1[2] === "O"){
-   player2wins()}
-  if (test.grid.row2[0] === "O" && test.grid.row2[1] === "O" && test.grid.row2[2] === "O"){
-   player2wins()}
-  if (test.grid.row3[0] === "O" && test.grid.row3[1] === "O" && test.grid.row3[2] === "O"){
-   player2wins()}
-  if (test.grid.row1[0] === "O" && test.grid.row2[0] === "O" && test.grid.row3[0] === "O"){
-   player2wins()}
-  if (test.grid.row1[0] === "O" && test.grid.row2[1] === "O" && test.grid.row3[2] === "O"){
-   player2wins()}
-  if (test.grid.row1[1] === "O" && test.grid.row2[1] === "O" && test.grid.row3[1] === "O"){
-   player2wins()}
-  if (test.grid.row1[2] === "O" && test.grid.row2[2] === "O" && test.grid.row3[2] === "O"){
-   player2wins()}
+  if (test.grid.row1[0] === "O" && test.grid.row1[1] === "O" && test.grid.row1[2] === "O") ||
+  if (test.grid.row2[0] === "O" && test.grid.row2[1] === "O" && test.grid.row2[2] === "O") ||
+  if (test.grid.row3[0] === "O" && test.grid.row3[1] === "O" && test.grid.row3[2] === "O") ||
+  if (test.grid.row1[0] === "O" && test.grid.row2[0] === "O" && test.grid.row3[0] === "O") ||
+  if (test.grid.row1[0] === "O" && test.grid.row2[1] === "O" && test.grid.row3[2] === "O") ||
+  if (test.grid.row1[1] === "O" && test.grid.row2[1] === "O" && test.grid.row3[1] === "O") ||
+  if (test.grid.row1[2] === "O" && test.grid.row2[2] === "O" && test.grid.row3[2] === "O") ||
   if (test.grid.row1[2] === "O" && test.grid.row2[1] === "O" && test.grid.row3[0] === "O"){
    player2wins()}
   }
@@ -120,8 +106,8 @@ function player1wins(){
   test.player2.saveWinsToStorage()
   announcer.innerText = "Player 1 Wins!!!"
   document.querySelector(".wincounter1").innerText = test.player1.wins
-  alert("reset game?")
-  return test.resetBoard()
+  // alert("reset game?")
+  test.resetBoard()
 }
 
 function player2wins(){
@@ -132,5 +118,5 @@ function player2wins(){
   document.querySelector(".wincounter2").innerText = test.player2.wins
 
   alert ("Player 2 Wins!")
-  return test.resetBoard()
+  test.resetBoard()
 }

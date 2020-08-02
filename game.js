@@ -5,13 +5,15 @@ class Game {
     this.player1turn = true;
     this.player2turn = false;
     this.turnCounter = 0;
+    this.gameCounter = 0;
     this.draw = false;
     this.grid = {row1: ["1", "2", "3" ], row2: ["4", "5", "6"], row3: ["7", "8", "9"]}
   }
 
   resetBoard(){
-    this.player1turn = true;
-    this.player2turn = false;
+    this.gameCounter++
+    this.firstTurnUpdater();
+    this.repopulateGrid();
     this.draw = false;
     this.turnCounter = 0;
     this.grid = {row1: ["1", "2", "3" ], row2: ["4", "5", "6"], row3: ["7", "8", "9"]}
@@ -20,4 +22,16 @@ class Game {
     this.player2.retreiveWinsFromStorage();
     console.log("Player2 Wins:", this.player2.wins)
   }
-}
+  firstTurnUpdater(){
+  if (this.gameCounter%2 === 0){
+      this.player1turn = true;
+      this.player2turn = false;
+    } else {
+      this.player1turn = false;
+      this.player2turn = true;
+    }
+  }
+  repopulateGrid(){
+  document.querySelectorAll(".square").innerText = ""
+    }
+  }
