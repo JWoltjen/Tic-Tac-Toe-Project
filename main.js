@@ -13,6 +13,7 @@ grid.addEventListener('click', winChecker1)
 grid.addEventListener('click', winChecker2)
 button.addEventListener('click', resetGame)
 
+
 function handleMainClick(event){
  if (test.player1turn === true && event.target.classList.contains("active")){
     event.target.innerText = (icon1)

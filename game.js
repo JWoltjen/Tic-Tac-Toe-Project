@@ -15,7 +15,7 @@ class Game {
     this.draw = false;
     this.turnCounter = 0;
     this.grid = {row1: ["1", "2", "3" ], row2: ["4", "5", "6"], row3: ["7", "8", "9"]};
-    // this.firstTurnUpdater();
+    this.firstTurnUpdater();
     this.retreiveWinsFromStorage();
   }
   firstTurnUpdater(){
