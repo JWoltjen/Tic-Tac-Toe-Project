@@ -5,10 +5,9 @@ class Player {
     this.wins = 0;
   }
   saveWinsToStorage(){
-    localStorage.setItem('wins', this.wins)
-
+    localStorage.setItem(`${this.id} wins`, this.wins)
   }
   retreiveWinsFromStorage(){
-    localStorage.getItem('wins', this.wins)
+    localStorage.getItem(`${this.id} wins`, this.wins)
   }
 }

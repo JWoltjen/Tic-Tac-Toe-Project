@@ -1,5 +1,6 @@
 var grid = document.querySelector('.d')
 var announcer = document.querySelector('.announcer')
+var button = document.querySelector('.button-box')
 var test = new Game(new Player("Player1", "X", 0), new Player("Player2","O", 0))
 
 var icon1 = (Object.values(test.player1.token))
@@ -10,7 +11,7 @@ grid.addEventListener('click', dataModelUpdater1)
 grid.addEventListener('click', dataModelUpdater2)
 grid.addEventListener('click', winChecker1)
 grid.addEventListener('click', winChecker2)
-
+button.addEventListener('click', resetGame)
 
 function handleMainClick(event){
  if (test.player1turn === true && event.target.classList.contains("active")){
@@ -71,26 +72,26 @@ function dataModelUpdater2(event){
   }
 
 function winChecker1(event){
-  if (test.grid.row1[0] === "X" && test.grid.row1[1] === "X" && test.grid.row1[2] === "X") ||
-  if (test.grid.row2[0] === "X" && test.grid.row2[1] === "X" && test.grid.row2[2] === "X") ||
-  if (test.grid.row3[0] === "X" && test.grid.row3[1] === "X" && test.grid.row3[2] === "X") ||
-  if (test.grid.row1[0] === "X" && test.grid.row2[0] === "X" && test.grid.row3[0] === "X") ||
-  if (test.grid.row1[0] === "X" && test.grid.row2[1] === "X" && test.grid.row3[2] === "X") ||
-  if (test.grid.row1[1] === "X" && test.grid.row2[1] === "X" && test.grid.row3[1] === "X") ||
-  if (test.grid.row1[2] === "X" && test.grid.row2[2] === "X" && test.grid.row3[2] === "X") ||
-  if (test.grid.row1[2] === "X" && test.grid.row2[1] === "X" && test.grid.row3[0] === "X"){
+  if ((test.grid.row1[0] === "X" && test.grid.row1[1] === "X" && test.grid.row1[2] === "X") ||
+     (test.grid.row2[0] === "X" && test.grid.row2[1] === "X" && test.grid.row2[2] === "X") ||
+     (test.grid.row3[0] === "X" && test.grid.row3[1] === "X" && test.grid.row3[2] === "X") ||
+     (test.grid.row1[0] === "X" && test.grid.row2[0] === "X" && test.grid.row3[0] === "X") ||
+     (test.grid.row1[0] === "X" && test.grid.row2[1] === "X" && test.grid.row3[2] === "X") ||
+     (test.grid.row1[1] === "X" && test.grid.row2[1] === "X" && test.grid.row3[1] === "X") ||
+     (test.grid.row1[2] === "X" && test.grid.row2[2] === "X" && test.grid.row3[2] === "X") ||
+     (test.grid.row1[2] === "X" && test.grid.row2[1] === "X" && test.grid.row3[0] === "X")){
    player1wins()}
   }
 
 function winChecker2(event){
-  if (test.grid.row1[0] === "O" && test.grid.row1[1] === "O" && test.grid.row1[2] === "O") ||
-  if (test.grid.row2[0] === "O" && test.grid.row2[1] === "O" && test.grid.row2[2] === "O") ||
-  if (test.grid.row3[0] === "O" && test.grid.row3[1] === "O" && test.grid.row3[2] === "O") ||
-  if (test.grid.row1[0] === "O" && test.grid.row2[0] === "O" && test.grid.row3[0] === "O") ||
-  if (test.grid.row1[0] === "O" && test.grid.row2[1] === "O" && test.grid.row3[2] === "O") ||
-  if (test.grid.row1[1] === "O" && test.grid.row2[1] === "O" && test.grid.row3[1] === "O") ||
-  if (test.grid.row1[2] === "O" && test.grid.row2[2] === "O" && test.grid.row3[2] === "O") ||
-  if (test.grid.row1[2] === "O" && test.grid.row2[1] === "O" && test.grid.row3[0] === "O"){
+  if ((test.grid.row1[0] === "O" && test.grid.row1[1] === "O" && test.grid.row1[2] === "O") ||
+     (test.grid.row2[0] === "O" && test.grid.row2[1] === "O" && test.grid.row2[2] === "O") ||
+     (test.grid.row3[0] === "O" && test.grid.row3[1] === "O" && test.grid.row3[2] === "O") ||
+     (test.grid.row1[0] === "O" && test.grid.row2[0] === "O" && test.grid.row3[0] === "O") ||
+     (test.grid.row1[0] === "O" && test.grid.row2[1] === "O" && test.grid.row3[2] === "O") ||
+     (test.grid.row1[1] === "O" && test.grid.row2[1] === "O" && test.grid.row3[1] === "O") ||
+     (test.grid.row1[2] === "O" && test.grid.row2[2] === "O" && test.grid.row3[2] === "O") ||
+     (test.grid.row1[2] === "O" && test.grid.row2[1] === "O" && test.grid.row3[0] === "O")){
    player2wins()}
   }
 
@@ -106,8 +107,7 @@ function player1wins(){
   test.player2.saveWinsToStorage()
   announcer.innerText = "Player 1 Wins!!!"
   document.querySelector(".wincounter1").innerText = test.player1.wins
-  // alert("reset game?")
-  test.resetBoard()
+  createButton()
 }
 
 function player2wins(){
@@ -116,7 +116,16 @@ function player2wins(){
   test.player1.saveWinsToStorage()
   announcer.innerText = "Player 2 Wins!!!"
   document.querySelector(".wincounter2").innerText = test.player2.wins
+  //onclick interpolate the button with innerHTML
+  // document.createElement('button');
+  // document.querySelector(".button-box").appendChild(newButton)
+  createButton()
+}
 
-  alert ("Player 2 Wins!")
+function createButton(){
+  return button.innerHTML = "<button> Play Again? </button>"
+  }
+
+function resetGame(){
   test.resetBoard()
 }
