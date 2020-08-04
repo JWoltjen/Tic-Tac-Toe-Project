@@ -106,6 +106,10 @@ function turnCounter(){
   test.turnCounter++
   test.player1turn = !test.player1turn;
   test.player2turn = !test.player2turn;
+  if (test.turnCounter > 8){
+    announcer.innerText = "Game is Drawn!"
+    createButton()
+  }
   }
 
 function player1wins(){
