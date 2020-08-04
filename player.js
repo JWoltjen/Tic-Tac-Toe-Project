@@ -9,12 +9,9 @@ class Player {
   }
 }
   saveWinsToStorage(){
-    localStorage.setItem(`${this.id} wins`, this.wins)
+  localStorage.setItem(`${this.id} wins`, this.wins)
   }
   retreiveWinsFromStorage(){
    this.wins = parseInt(localStorage.getItem(`${this.id} wins`))
-   if (this.wins === undefined){
-    return this.wins = 0
    }
-  }
 }

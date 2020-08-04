@@ -1,7 +1,7 @@
+var currentGame = new Game
 var grid = document.querySelector('.d')
 var announcer = document.querySelector('.announcer')
 var button = document.querySelector('.button-box')
-var currentGame = new Game(new Player("Player1", "X", 0), new Player("Player2","O", 0));
 
 grid.addEventListener('click', handleMainClick)
 grid.addEventListener('click', dataModelUpdater1)
@@ -16,23 +16,19 @@ window.onload = function (){
   currentGame.player2.retreiveWinsFromStorage();
   document.querySelector(".winCounter2").innerHTML = currentGame.player2.wins;
 }
-  //if there is nothing in local storage, this will return NaN for both player 1 and player 2 wins. This is because the game has not instiated yet.
-
-var icon1 = (Object.values(currentGame.player1.token))
-var icon2 = (Object.values(currentGame.player2.token))
 
 function handleMainClick(event){
- if (currentGame.player1turn === true && event.target.classList.contains("active")){
-    event.target.innerText = (icon1);
+if (currentGame.win === false && currentGame.player1turn === true && event.target.classList.contains("active")){
+    event.target.innerText = currentGame.player1.token;
     event.target.classList.remove("active");
     dataModelUpdater1(event);
-    announcer.innerText = "It's Player 2's Turn";
+    announcer.innerText = "It's " + currentGame.player1.token +"'s Turn";
     return turnCounter();
-  } if (currentGame.player2turn === true && event.target.classList.contains("active")){
-    event.target.innerText = (icon2);
+  } if (currentGame.win === false && currentGame.player2turn === true && event.target.classList.contains("active")){
+    event.target.innerText = currentGame.player2.token;
     event.target.classList.remove("active");
     dataModelUpdater2(event);
-    announcer.innerText = "It's Player 1's Turn";
+    announcer.innerText = "It's " + currentGame.player2.token + " 's Turn";
     return turnCounter();
   }
 }
@@ -111,29 +107,39 @@ function turnCounter(){
     announcer.innerText = "Game is Drawn!";
     createButton()
   }
-  }
+}
 
 function player1wins(){
-  currentGame.player1.wins++;
-  currentGame.player1.saveWinsToStorage();
-  currentGame.player2.saveWinsToStorage();
-  announcer.innerText = "Player 1 Wins!!!";
-  document.querySelector(".wincounter1").innerText = currentGame.player1.wins;
-  createButton()
+    if (currentGame.win === false){
+    currentGame.player1.wins++;
+    currentGame.player1.saveWinsToStorage();
+    currentGame.player2.saveWinsToStorage();
+    announcer.innerText = "Player 1 Wins!!!";
+    document.querySelector(".wincounter1").innerText = currentGame.player1.wins;
+    currentGame.win = true;
+    createButton()
+  } else {
+    return
+  }
 }
 
 function player2wins(){
+  if (currentGame.win === false){
   currentGame.player2.wins++;
   currentGame.player2.saveWinsToStorage();
   currentGame.player1.saveWinsToStorage();
   announcer.innerText = "Player 2 Wins!!!";
   document.querySelector(".wincounter2").innerText = currentGame.player2.wins;
+  currentGame.win = true;
   createButton()
+  } else {
+    return
+  }
 }
 
 function createButton(){
   return button.innerHTML = "<button> Play Again? </button>"
-  }
+}
 
 function resetGame(){
   currentGame.resetBoard()
