@@ -1,5 +1,5 @@
 class Player {
-  constructor(name, token){
+  constructor(name, token, wins){
     this.id = name;
     this.token = token;
     this.wins = 0;
@@ -9,6 +9,5 @@ class Player {
   }
   retreiveWinsFromStorage(){
     this.wins = parseInt(localStorage.getItem(`${this.id} wins`))
-
   }
 }
