@@ -2,6 +2,8 @@ var currentGame = new Game
 var grid = document.querySelector('.d')
 var announcer = document.querySelector('.announcer')
 var button = document.querySelector('.button-box')
+var winCounter1 = document.querySelector(".winCounter1")
+var winCounter2 =document.querySelector(".winCounter2")
 
 grid.addEventListener('click', handleMainClick)
 grid.addEventListener('click', dataModelUpdater1)
@@ -12,9 +14,9 @@ button.addEventListener('click', resetGame)
 
 window.onload = function (){
   currentGame.player1.retreiveWinsFromStorage();
-  document.querySelector(".winCounter1").innerHTML = currentGame.player1.wins;
+  winCounter1.innerText = currentGame.player1.wins;
   currentGame.player2.retreiveWinsFromStorage();
-  document.querySelector(".winCounter2").innerHTML = currentGame.player2.wins;
+  winCounter2.innerText = currentGame.player2.wins;
 }
 
 function handleMainClick(event){
@@ -22,13 +24,13 @@ if (currentGame.win === false && currentGame.player1turn === true && event.targe
     event.target.innerText = currentGame.player1.token;
     event.target.classList.remove("active");
     dataModelUpdater1(event);
-    announcer.innerText = "It's " + currentGame.player1.token +"'s Turn";
+    announcer.innerText = "It's " + currentGame.player2.token +"'s Turn";
     return turnCounter();
   } if (currentGame.win === false && currentGame.player2turn === true && event.target.classList.contains("active")){
     event.target.innerText = currentGame.player2.token;
     event.target.classList.remove("active");
     dataModelUpdater2(event);
-    announcer.innerText = "It's " + currentGame.player2.token + " 's Turn";
+    announcer.innerText = "It's " + currentGame.player1.token + " 's Turn";
     return turnCounter();
   }
 }
@@ -114,7 +116,7 @@ function player1wins(){
     currentGame.player1.wins++;
     currentGame.player1.saveWinsToStorage();
     currentGame.player2.saveWinsToStorage();
-    announcer.innerText = "Player 1 Wins!!!";
+    announcer.innerText = currentGame.player1.token + " Wins!!!";
     document.querySelector(".wincounter1").innerText = currentGame.player1.wins;
     currentGame.win = true;
     createButton()
@@ -128,7 +130,7 @@ function player2wins(){
   currentGame.player2.wins++;
   currentGame.player2.saveWinsToStorage();
   currentGame.player1.saveWinsToStorage();
-  announcer.innerText = "Player 2 Wins!!!";
+  announcer.innerText = currentGame.player2.token + " Wins!!!";
   document.querySelector(".wincounter2").innerText = currentGame.player2.wins;
   currentGame.win = true;
   createButton()
