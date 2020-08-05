@@ -5,7 +5,7 @@
 
 This was the final project for Turing School of Software and Design's frontend Module 1 (2006). Students were challenged to create a working tic-tac-toe game from scratch using HTML, CSS, and Javascript. The final product features data that persists after reload, clickable squares using event listeners, dynamic data model using classes for game and player instantiations, and the ability to reset the game while keeping score. The project spanned approximately 8 days.
 
-![Recordit GIF](http://g.recordit.co/JDE4VRfYYl/gif)
+![Recordit GIF](http://g.recordit.co/JDE4VRfYYl.gif)
 
 ## Key Concepts
 
