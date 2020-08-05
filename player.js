@@ -1,14 +1,13 @@
 class Player {
-  constructor(name, token){
+  constructor(name, token, wins){
     this.id = name;
     this.token = token;
-    this.wins = 0;
+    this.wins = wins || 0;
   }
   saveWinsToStorage(){
-    localStorage.setItem('wins', this.wins)
-
+    localStorage.setItem(`${this.id} wins`, this.wins)
   }
   retreiveWinsFromStorage(){
-    localStorage.getItem('wins', this.wins)
+   this.wins = parseInt(localStorage.getItem(`${this.id} wins`))
+   }
   }
-}

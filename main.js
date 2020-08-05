@@ -1,136 +1,148 @@
+var currentGame = new Game
 var grid = document.querySelector('.d')
 var announcer = document.querySelector('.announcer')
-var test = new Game(new Player("Player1", "X", 0), new Player("Player2","O", 0))
-
-var icon1 = (Object.values(test.player1.token))
-var icon2 = (Object.values(test.player2.token))
+var button = document.querySelector('.button-box')
+var winCounter1 = document.querySelector(".winCounter1")
+var winCounter2 =document.querySelector(".winCounter2")
 
 grid.addEventListener('click', handleMainClick)
 grid.addEventListener('click', dataModelUpdater1)
 grid.addEventListener('click', dataModelUpdater2)
 grid.addEventListener('click', winChecker1)
 grid.addEventListener('click', winChecker2)
+button.addEventListener('click', resetGame)
 
+window.onload = function (){
+  currentGame.player1.retreiveWinsFromStorage();
+  winCounter1.innerText = currentGame.player1.wins;
+  currentGame.player2.retreiveWinsFromStorage();
+  winCounter2.innerText = currentGame.player2.wins;
+}
 
 function handleMainClick(event){
- if (test.player1turn === true && event.target.classList.contains("active")){
-    event.target.innerText = (icon1)
-    event.target.classList.remove("active")
-    dataModelUpdater1(event)
-    announcer.innerText = "It's Player 2's Turn"
+if (currentGame.win === false && currentGame.player1turn === true && event.target.classList.contains("active")){
+    event.target.innerText = currentGame.player1.token;
+    event.target.classList.remove("active");
+    dataModelUpdater1(event);
+    announcer.innerText = "It's " + currentGame.player2.token +"'s Turn";
     return turnCounter();
-  } if (test.player2turn === true && event.target.classList.contains("active")){
-    event.target.innerText = (icon2)
-    event.target.classList.remove("active")
-    dataModelUpdater2(event)
-    announcer.innerText = "It's Player 1's Turn"
+  } if (currentGame.win === false && currentGame.player2turn === true && event.target.classList.contains("active")){
+    event.target.innerText = currentGame.player2.token;
+    event.target.classList.remove("active");
+    dataModelUpdater2(event);
+    announcer.innerText = "It's " + currentGame.player1.token + " 's Turn";
     return turnCounter();
   }
 }
 
 function dataModelUpdater1(event){
-  if (test.player1turn === true && event.target.id === "1"){
-    return test.grid.row1[0] = "O"}
-  if (test.player1turn === true && event.target.id === "2"){
-     return test.grid.row1[1] = "O"}
-  if (test.player1turn === true && event.target.id === "3"){
-    return test.grid.row1[2] = "O"}
-  if (test.player1turn === true && event.target.id === "4"){
-    return  test.grid.row2[0] = "O"}
-  if (test.player1turn === true && event.target.id === "5"){
-    return  test.grid.row2[1] = "O"}
-  if (test.player1turn === true && event.target.id === "6"){
-      return test.grid.row2[2] = "O"}
-  if (test.player1turn === true && event.target.id === "7"){
-    return test.grid.row3[0] = "O"}
-  if (test.player1turn === true && event.target.id === "8"){
-     return test.grid.row3[1] = "O"}
-  if (test.player1turn === true && event.target.id === "9"){
-    return test.grid.row3[2] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "1"){
+    return currentGame.grid.row1[0] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "2"){
+     return currentGame.grid.row1[1] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "3"){
+    return currentGame.grid.row1[2] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "4"){
+    return  currentGame.grid.row2[0] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "5"){
+    return  currentGame.grid.row2[1] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "6"){
+      return currentGame.grid.row2[2] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "7"){
+    return currentGame.grid.row3[0] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "8"){
+     return currentGame.grid.row3[1] = "O"}
+  if (currentGame.player1turn === true && event.target.id === "9"){
+    return currentGame.grid.row3[2] = "O"}
   }
 
 function dataModelUpdater2(event){
-  if (test.player2turn === true && event.target.id === "1"){
-     return test.grid.row1[0] = "X"}
-  if (test.player2turn === true && event.target.id === "2"){
-     return test.grid.row1[1] = "X"}
-  if (test.player2turn === true && event.target.id === "3"){
-     return test.grid.row1[2] = "X"}
-  if (test.player2turn === true && event.target.id === "4"){
-      return test.grid.row2[0] = "X"}
-  if (test.player2turn === true && event.target.id === "5"){
-      return test.grid.row2[1] = "X"}
-  if (test.player2turn === true && event.target.id === "6"){
-      return test.grid.row2[2] = "X"}
-  if (test.player2turn === true && event.target.id === "7"){
-      return test.grid.row3[0] = "X"}
-  if (test.player2turn === true && event.target.id === "8"){
-      return test.grid.row3[1] = "X"}
-  if (test.player2turn === true && event.target.id === "9"){
-      return test.grid.row3[2] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "1"){
+     return currentGame.grid.row1[0] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "2"){
+     return currentGame.grid.row1[1] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "3"){
+     return currentGame.grid.row1[2] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "4"){
+      return currentGame.grid.row2[0] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "5"){
+      return currentGame.grid.row2[1] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "6"){
+      return currentGame.grid.row2[2] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "7"){
+      return currentGame.grid.row3[0] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "8"){
+      return currentGame.grid.row3[1] = "X"}
+  if (currentGame.player2turn === true && event.target.id === "9"){
+      return currentGame.grid.row3[2] = "X"}
   }
 
 function winChecker1(event){
-  if (test.grid.row1[0] === "X" && test.grid.row1[1] === "X" && test.grid.row1[2] === "X"){
-  player1wins()}
-  if (test.grid.row2[0] === "X" && test.grid.row2[1] === "X" && test.grid.row2[2] === "X"){
-   player1wins()}
-  if (test.grid.row3[0] === "X" && test.grid.row3[1] === "X" && test.grid.row3[2] === "X"){
-   player1wins()}
-  if (test.grid.row1[0] === "X" && test.grid.row2[0] === "X" && test.grid.row3[0] === "X"){
-   player1wins()}
-  if (test.grid.row1[0] === "X" && test.grid.row2[1] === "X" && test.grid.row3[2] === "X"){
-   player1wins()}
-  if (test.grid.row1[1] === "X" && test.grid.row2[1] === "X" && test.grid.row3[1] === "X"){
-   player1wins()}
-  if (test.grid.row1[2] === "X" && test.grid.row2[2] === "X" && test.grid.row3[2] === "X"){
-   player1wins()}
-  if (test.grid.row1[2] === "X" && test.grid.row2[1] === "X" && test.grid.row3[0] === "X"){
+  if ((currentGame.grid.row1[0] === "X" && currentGame.grid.row1[1] === "X" && currentGame.grid.row1[2] === "X") ||
+     (currentGame.grid.row2[0] === "X" && currentGame.grid.row2[1] === "X" && currentGame.grid.row2[2] === "X") ||
+     (currentGame.grid.row3[0] === "X" && currentGame.grid.row3[1] === "X" && currentGame.grid.row3[2] === "X") ||
+     (currentGame.grid.row1[0] === "X" && currentGame.grid.row2[0] === "X" && currentGame.grid.row3[0] === "X") ||
+     (currentGame.grid.row1[0] === "X" && currentGame.grid.row2[1] === "X" && currentGame.grid.row3[2] === "X") ||
+     (currentGame.grid.row1[1] === "X" && currentGame.grid.row2[1] === "X" && currentGame.grid.row3[1] === "X") ||
+     (currentGame.grid.row1[2] === "X" && currentGame.grid.row2[2] === "X" && currentGame.grid.row3[2] === "X") ||
+     (currentGame.grid.row1[2] === "X" && currentGame.grid.row2[1] === "X" && currentGame.grid.row3[0] === "X")){
    player1wins()}
   }
 
 function winChecker2(event){
-  if (test.grid.row1[0] === "O" && test.grid.row1[1] === "O" && test.grid.row1[2] === "O"){
-   player2wins()}
-  if (test.grid.row2[0] === "O" && test.grid.row2[1] === "O" && test.grid.row2[2] === "O"){
-   player2wins()}
-  if (test.grid.row3[0] === "O" && test.grid.row3[1] === "O" && test.grid.row3[2] === "O"){
-   player2wins()}
-  if (test.grid.row1[0] === "O" && test.grid.row2[0] === "O" && test.grid.row3[0] === "O"){
-   player2wins()}
-  if (test.grid.row1[0] === "O" && test.grid.row2[1] === "O" && test.grid.row3[2] === "O"){
-   player2wins()}
-  if (test.grid.row1[1] === "O" && test.grid.row2[1] === "O" && test.grid.row3[1] === "O"){
-   player2wins()}
-  if (test.grid.row1[2] === "O" && test.grid.row2[2] === "O" && test.grid.row3[2] === "O"){
-   player2wins()}
-  if (test.grid.row1[2] === "O" && test.grid.row2[1] === "O" && test.grid.row3[0] === "O"){
+  if ((currentGame.grid.row1[0] === "O" && currentGame.grid.row1[1] === "O" && currentGame.grid.row1[2] === "O") ||
+     (currentGame.grid.row2[0] === "O" && currentGame.grid.row2[1] === "O" && currentGame.grid.row2[2] === "O") ||
+     (currentGame.grid.row3[0] === "O" && currentGame.grid.row3[1] === "O" && currentGame.grid.row3[2] === "O") ||
+     (currentGame.grid.row1[0] === "O" && currentGame.grid.row2[0] === "O" && currentGame.grid.row3[0] === "O") ||
+     (currentGame.grid.row1[0] === "O" && currentGame.grid.row2[1] === "O" && currentGame.grid.row3[2] === "O") ||
+     (currentGame.grid.row1[1] === "O" && currentGame.grid.row2[1] === "O" && currentGame.grid.row3[1] === "O") ||
+     (currentGame.grid.row1[2] === "O" && currentGame.grid.row2[2] === "O" && currentGame.grid.row3[2] === "O") ||
+     (currentGame.grid.row1[2] === "O" && currentGame.grid.row2[1] === "O" && currentGame.grid.row3[0] === "O")){
    player2wins()}
   }
 
 function turnCounter(){
-  test.turnCounter++
-  test.player1turn = !test.player1turn;
-  test.player2turn = !test.player2turn;
+  currentGame.turnCounter++;
+  currentGame.player1turn = !currentGame.player1turn;
+  currentGame.player2turn = !currentGame.player2turn;
+  if (currentGame.turnCounter > 8){
+    announcer.innerText = "Game is Drawn!";
+    createButton()
   }
+}
 
 function player1wins(){
-  test.player1.wins++
-  test.player1.saveWinsToStorage()
-  test.player2.saveWinsToStorage()
-  announcer.innerText = "Player 1 Wins!!!"
-  document.querySelector(".wincounter1").innerText = test.player1.wins
-  alert("reset game?")
-  return test.resetBoard()
+    if (currentGame.win === false){
+    currentGame.player1.wins++;
+    currentGame.player1.saveWinsToStorage();
+    currentGame.player2.saveWinsToStorage();
+    announcer.innerText = currentGame.player1.token + " Wins!!!";
+    document.querySelector(".wincounter1").innerText = currentGame.player1.wins;
+    currentGame.win = true;
+    createButton()
+  } else {
+    return
+  }
 }
 
 function player2wins(){
-  test.player2.wins++
-  test.player2.saveWinsToStorage()
-  test.player1.saveWinsToStorage()
-  announcer.innerText = "Player 2 Wins!!!"
-  document.querySelector(".wincounter2").innerText = test.player2.wins
+  if (currentGame.win === false){
+  currentGame.player2.wins++;
+  currentGame.player2.saveWinsToStorage();
+  currentGame.player1.saveWinsToStorage();
+  announcer.innerText = currentGame.player2.token + " Wins!!!";
+  document.querySelector(".wincounter2").innerText = currentGame.player2.wins;
+  currentGame.win = true;
+  createButton()
+  } else {
+    return
+  }
+}
 
-  alert ("Player 2 Wins!")
-  return test.resetBoard()
+function createButton(){
+  return button.innerHTML = "<button> Play Again? </button>"
+}
+
+function resetGame(){
+  currentGame.resetBoard()
 }

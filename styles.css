@@ -3,6 +3,10 @@ body {
   background-color: #CAF0F8;
   font-family: 'Fira Sans', sans-serif;
 }
+h1 {
+  margin: none;
+  padding: none;
+}
 
 .wrapper {
         display: grid;
@@ -28,6 +32,17 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        display: grid;
+        margin: none;
+        padding: none;
+        grid-template-rows: 100px 25px
+    }
+    .announcer {
+      grid-row: 1;
+      display: flex;
+    }
+    .button-box {
+      .grid-row: 2;
     }
     .b {
       grid-column: 1;
